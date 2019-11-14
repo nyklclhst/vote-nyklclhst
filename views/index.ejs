@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>NykVote</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <script src="javascripts/navbar.js"></script>
+    <script src="javascripts/index.js"></script>
+</head>
+<body style="background-image: url(&quot;images/mountain_bg.jpg&quot;);color: rgb(246,247,248);" onload="ready()">
+    <% include ./navbar1 %>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12" style="padding-top: 27px;">
+                    <h1 class="text-center" style="font-family: Bitter, serif;color: rgb(229,230,231);margin-top: 10px;margin-right: 10px;margin-bottom: 10px;padding: 10px;">NykVote</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center"><img class="img-fluid d-xl-flex center" src="images/logo.png" width="300px" height="300px" style="padding-top: 40px;"></div>
+                <div class="col-md-6 container">
+                    <div style="padding: 26px;">
+                        <p class="lead text-justify" style="font-family: Delius, cursive;margin: 0px;padding: 7px;">NykVote adalah sebuah <em>web application</em> untuk melakukan proses penghitungan suara secara <em>online</em>. Kelebihan dari <em>web</em> <em>application</em> ini adalah menggunakan bahasa pemrograman Node JS, hasil penghitungan
+                            suara dapat dilihat secara langsung, dan terdapat pencatatan siapa yang terakhir kali malakukan voting. Node JS sendiri adalah sebuah bahasa pemrograman yang berjalan pada <em>server side</em>, yang mana artinya program ini
+                            tidak akan terlihat pada peramban web <em>client</em>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="regis-modal" style="color: rgb(0,0,0);font-family: Bitter, serif;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header btn-primary">
+                    <h4 class="modal-title">Registration</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <form method="POST" action="/regis">
+                        <div class="form-group"><input class="form-control" type="text" placeholder="Username" name="username" required=""></div>
+                        <div class="form-group"><input class="form-control" type="text" placeholder="Email" name="email" required=""></div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="Password" id="pass" name="password" required="" onkeyup="check()">
+                            <span id="message"></span>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="password" placeholder="Confirm Password" id="c_pass" name="c_password" required="" onkeyup="check()">
+                            <span id="message1"></span>
+                        </div>
+                        <div class="form-group d-xl-flex justify-content-xl-center"><button id="regis" class="btn btn-primary" type="submit" disabled>Submit</button></div>
+                    </form>
+                </div>
+                <div class="modal-footer btn-primary" style="padding: 0 0 9px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="login-modal" style="color: rgb(0,0,0);font-family: Bitter, serif;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header btn-success">
+                    <h4 class="modal-title">Login</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <form action="/login" method="POST">
+                        <div class="form-group"><input class="form-control" type="text" placeholder="Username" required="" name="username"></div>
+                        <div class="form-group"><input class="form-control" type="password" placeholder="Password" required="" name="password"></div>
+                        <div class="form-group d-xl-flex justify-content-xl-center"><button class="btn btn-primary btn-success" type="submit">Login</button></div>
+                    </form>
+                </div>
+                <div class="modal-footer btn-success" style="padding: 0 0 9px;"></div>
+            </div>
+        </div>
+    </div>
+    <script src="javascripts/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

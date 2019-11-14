@@ -1,0 +1,39 @@
+<div class="modal fade" role="dialog" tabindex="-1" id="events-modal" style="color: rgb(0,0,0);font-family: Bitter, serif;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title">Add New Events</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <form method="POST" action="./addEvent">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Event name" name="eventName" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="datetime-local" placeholder="Start Vote" name="startVote" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="datetime-local" placeholder="End Vote" name="endVote" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Code" name="code" required disabled>
+                    </div>
+                    <div class="form-group d-xl-flex justify-content-xl-center"><button id="regis" class="btn btn-primary" type="submit">Submit</button></div>
+                </form>
+            </div>
+            <div class="modal-footer btn-primary" style="padding: 0 0 9px;"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function makeid() {
+        var length = 5;
+        var result = '';
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+    document.getElementById('code').value = makeid();
+</script>

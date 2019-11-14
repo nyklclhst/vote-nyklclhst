@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>NykVote</title>
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aleo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Asap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Delius">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed">
+    <link rel="shortcut icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../stylesheets/simple-sidebar.css">
+</head>
+<body onload="ready()">
+    <div class="d-flex" id="wrapper">
+        <% include ./sidebar %>
+        <div id="page-content-wrapper">
+            <% include ./navbar %>
+            <div class="container-fluid">
+                <h1 class="mt-4">NykVote</h1>
+                <p class="lead text-justify" style="font-family: Delius, cursive;margin: 0px;padding: 7px;">NykVote adalah sebuah <em>web application</em> untuk melakukan proses penghitungan suara secara <em>online</em>. Kelebihan dari <em>web</em> <em>application</em> ini adalah menggunakan bahasa pemrograman Node JS, hasil penghitungan
+                    suara dapat dilihat secara langsung, dan terdapat pencatatan siapa yang terakhir kali malakukan voting. Node JS sendiri adalah sebuah bahasa pemrograman yang berjalan pada <em>server side</em>, yang mana artinya program ini
+                    tidak akan terlihat pada peramban web <em>client</em>.</p>
+            </div>
+        </div>
+    </div>
+    <% include ./modal%>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+        });
+        function ready(){
+            document.getElementById('menu-toggle').click();
+        }
+    </script>
+</body>
+</html>
