@@ -14,9 +14,6 @@
                     <div class="form-group">
                         <input class="form-control" type="datetime-local" placeholder="End Vote" name="endVote" required>
                     </div>
-                    <div class="form-group">
-                        <input class="form-control" type="text" placeholder="Code" name="code" required disabled>
-                    </div>
                     <div class="form-group d-xl-flex justify-content-xl-center"><button id="regis" class="btn btn-primary" type="submit">Submit</button></div>
                 </form>
             </div>
@@ -24,16 +21,3 @@
         </div>
     </div>
 </div>
-<script>
-    function makeid() {
-        var length = 5;
-        var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
-    document.getElementById('code').value = makeid();
-</script>

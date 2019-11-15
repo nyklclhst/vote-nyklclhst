@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
   let event_name = [],
     start_vote = [],
     end_vote = [],
-    code = [];
+    code = [],
+    owner = [];
   if(cookie === undefined){
     res.redirect(301,'/');
   } else {
@@ -31,15 +32,16 @@ router.get('/', function(req, res, next) {
             con.query(sql,function(error,resp,fields){
                 if(error){
                     console.log(error);
-                    res.render('admin/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code});
+                    res.render('admin/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code, owner: owner});
                 } else {
                     for(var i=0;i<resp.length;i++){
                         event_name.push(resp[i].event_name);
                         start_vote.push(resp[i].start_vote);
                         end_vote.push(resp[i].end_vote);
                         code.push(resp[i].code);
+                        owner.push(resp[i].owner_id);
                     }
-                    res.render('admin/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code});
+                    res.render('admin/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code, owner: owner});
                 }
             });
         }

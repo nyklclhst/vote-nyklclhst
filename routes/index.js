@@ -56,8 +56,8 @@ router.post('/login',function(req,res,next){
                         Buffer.from('nyklclhst','utf8').toString('hex')+'//'+
                         Buffer.from(resp[0].role,'utf8').toString('hex');
                     temp = hash1.update(temp,'utf8').digest('hex');
-                    res.cookie('login',temp,{maxAge: 900000});
-                    res.cookie('username',uname,{maxAge: 900000});
+                    res.cookie('login',temp,{expires: new Date(Date.now() + 900000), httpOnly: true});
+                    res.cookie('username',uname,{expires: new Date(Date.now() + 900000), httpOnly: true});
                     res.redirect(301,'/admin/');
                 } else {
                     console.log('Success Login as User');
@@ -65,8 +65,8 @@ router.post('/login',function(req,res,next){
                         Buffer.from('nyklclhst','utf8').toString('hex')+'//'+
                         Buffer.from(resp[0].role,'utf8').toString('hex');
                     temp = hash1.update(temp,'utf8').digest('hex')+'//'+resp[0].id;
-                    res.cookie('login',temp,{maxAge: 900000});
-                    res.cookie('username',uname,{maxAge: 900000});
+                    res.cookie('login',temp);
+                    res.cookie('username',uname);
                     res.redirect(301,'/dashboard/');
                 }
             }
