@@ -29,12 +29,12 @@
                     </div>
                 </div>
                 <% for(let i=0;i < nama_event.length;i++){ %>
-                <a href="#">
+                <a href=<%= "voting/vote?code="+ code[i] %>>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm">
-                                    <p><%= nama_event[i] %></p>
+                                    <p><%= nama_event[i] %> / <%= code[i] %></p>
                                 </div>
                                 <div class="col-sm">
                                     <p style="text-align: center;"><%= start_vote[i] %></p> 

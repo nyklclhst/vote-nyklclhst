@@ -15,6 +15,7 @@ var adminCalonRouter = require('./routes/admin/calon');
 var adminHistoryRouter = require('./routes/admin/history');
 var clientRouter = require('./routes/client/index');
 var clientHistRouter = require('./routes/client/events');
+var voteRouter = require('./routes/client/vote');
 
 var app = express();
 
@@ -39,6 +40,7 @@ app.use('/admin/calon', adminCalonRouter);
 app.use('/admin/history', adminHistoryRouter);
 app.use('/dashboard/', clientRouter);
 app.use('/dashboard/events', clientHistRouter);
+app.use('/dashboard/vote', voteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

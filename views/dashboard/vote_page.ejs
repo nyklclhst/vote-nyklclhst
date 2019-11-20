@@ -1,0 +1,8 @@
+<form method="POST">
+    <% for(let i=0;i< id.length;i++) { %>
+        <img src=<%= img[i] %> width="200px" height="200px"><br>
+        <input type="radio" name="calon" value=<%= id[i] + '/' + vote[i] %>><%= calon_name[i] %><br>
+        <p><%= parpol[i] %></p>
+    <% } %>
+    <button type="submit">Submit</button>
+</form>

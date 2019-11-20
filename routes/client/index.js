@@ -47,15 +47,15 @@ router.post('/addEvent', function(req,res,next){
   con.connect(function(err){
     if(err){
       console.log(err);
-      res.redirect(301,'/');
+      res.redirect(301,'/dashboard/events');
     } else {
       const sql = 'insert into events(event_name,start_vote,end_vote,code,owner_id) values (?,?,?,?,(select id from users where users.username = ?))';
       con.query(sql,[eventname,startvote,endvote,code,req.cookies.username], function(error,resp,fields){
         if(error){
           console.log(error)
-          res.redirect(301,'/');
+          res.redirect(301,'/dashboard/events');
         } else {
-          res.redirect(301,'/');
+          res.redirect(301,'/dashboard/events');
         }
       })
     }
