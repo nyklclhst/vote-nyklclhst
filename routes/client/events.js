@@ -33,7 +33,6 @@ router.get('/', function(req, res, next) {
     code = [];
   if(cookie === undefined){
     res.redirect(301,'/');
-    // console.log(cookie);
   } else {
     const con = sql_connect();
     con.connect(function(err){

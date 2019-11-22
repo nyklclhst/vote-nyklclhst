@@ -20,11 +20,12 @@ router.get('/', function(req, res, next) {
     let nama_event = [],
     start_vote = [],
     code = [],
-    end_vote = [];
+    end_vote = [],
+    voted = [];
     if(cookie === undefined){
         res.redirect(301,'/');
     } else{
-        const sql = 'select b.event_name,b.start_vote,b.end_vote,b.code from voting_data a \
+        const sql = 'select a.voted,b.event_name,b.start_vote,b.end_vote,b.code from voting_data a \
             left join events b on (b.id = a.event_id) where a.user_id = ?';
         db.connect(function(err){
             if(err){
@@ -42,9 +43,10 @@ router.get('/', function(req, res, next) {
                                 start_vote.push(resp[i].start_vote);
                                 end_vote.push(resp[i].end_vote);
                                 code.push(resp[i].code);
+                                voted.push(resp[i].voted);
                             }
                         }
-                        res.render('dashboard/voting',{nama_event: nama_event, start_vote: start_vote, end_vote: end_vote, code: code});
+                        res.render('dashboard/voting',{nama_event: nama_event, start_vote: start_vote, end_vote: end_vote, code: code, voted: voted});
                     }
                 })
             }
@@ -72,10 +74,10 @@ router.post('/joinEvent', function(req,res,next){
                     console.log('Sukses!');
                     res.redirect(301,'/dashboard/voting');
                 }
-            });
+            })
         }
         db.end();
-    });
+    })
 })
 
 router.get('/vote', function(req,res,next){
@@ -101,10 +103,10 @@ router.get('/vote', function(req,res,next){
                         res.redirect(301,'/dashboard/voting');
                     }
                 }
-            });
+            })
         }
         db.end();
-    });
+    })
 })
 
 module.exports = router;
