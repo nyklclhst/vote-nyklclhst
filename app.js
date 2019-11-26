@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/admin/users');
-var votingRouter = require('./routes/client/voting');
 var suaraRouter = require('./routes/suara');
 var histRouter = require('./routes/history');
 var adminRouter = require('./routes/admin/index');
@@ -15,8 +14,10 @@ var adminCalonRouter = require('./routes/admin/calon');
 var adminHistoryRouter = require('./routes/admin/history');
 var clientRouter = require('./routes/client/index');
 var clientEventRouter = require('./routes/client/events');
-var voteRouter = require('./routes/client/vote');
+var clientVotingRouter = require('./routes/client/voting');
+var clientVoteRouter = require('./routes/client/vote');
 var clientHistoryRouter = require('./routes/client/history');
+var clientProfileRouter = require('./routes/client/profile');
 
 var app = express();
 
@@ -40,9 +41,10 @@ app.use('/admin/history', adminHistoryRouter);
 app.use('/admin/users', usersRouter);
 app.use('/dashboard/', clientRouter);
 app.use('/dashboard/events', clientEventRouter);
-app.use('/dashboard/vote', voteRouter);
-app.use('/dashboard/voting', votingRouter);
+app.use('/dashboard/vote', clientVoteRouter);
+app.use('/dashboard/voting', clientVotingRouter);
 app.use('/dashboard/history', clientHistoryRouter);
+app.use('/dashboard/profile', clientProfileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
