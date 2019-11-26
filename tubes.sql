@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.41-MariaDB, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.16  Distrib 10.1.43-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: tubes
 -- ------------------------------------------------------
--- Server version	10.1.41-MariaDB-0ubuntu0.18.04.1
+-- Server version	10.1.43-MariaDB-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -41,7 +41,7 @@ CREATE TABLE `calon` (
 
 LOCK TABLES `calon` WRITE;
 /*!40000 ALTER TABLE `calon` DISABLE KEYS */;
-INSERT INTO `calon` VALUES (2,'calon1','parpol1','calon_img-1574186855754.png',9,1),(3,'calon2','parpol2','calon_img-1574197641511.png',9,0);
+INSERT INTO `calon` VALUES (2,'calon1','parpol1','calon_img-1574186855754.png',9,1),(3,'calon2','parpol2','calon_img-1574197641511.png',9,1);
 /*!40000 ALTER TABLE `calon` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +115,7 @@ CREATE TABLE `voting_data` (
   `user_id` int(11) NOT NULL,
   `calon_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
-  `waktu_vote` date DEFAULT NULL,
+  `waktu_vote` datetime DEFAULT NULL,
   `voted` varchar(254) NOT NULL DEFAULT 'No',
   PRIMARY KEY (`id`),
   KEY `voting_data_ibfk_1` (`user_id`),
@@ -124,7 +124,7 @@ CREATE TABLE `voting_data` (
   CONSTRAINT `voting_data_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `voting_data_ibfk_2` FOREIGN KEY (`calon_id`) REFERENCES `calon` (`id`) ON UPDATE CASCADE,
   CONSTRAINT `voting_data_ibfk_3` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -133,7 +133,7 @@ CREATE TABLE `voting_data` (
 
 LOCK TABLES `voting_data` WRITE;
 /*!40000 ALTER TABLE `voting_data` DISABLE KEYS */;
-INSERT INTO `voting_data` VALUES (8,2,2,9,'2019-11-20','Yes');
+INSERT INTO `voting_data` VALUES (11,2,2,9,'2019-11-23 01:22:55','Yes'),(12,3,3,9,'2019-11-23 02:14:19','Yes');
 /*!40000 ALTER TABLE `voting_data` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -146,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-20 13:34:27
+-- Dump completed on 2019-11-27  1:10:23
