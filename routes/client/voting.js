@@ -1,5 +1,4 @@
 var express = require('express');
-var url = require('url');
 const mysql = require('mysql');
 var router = express.Router();
 
@@ -59,24 +58,37 @@ router.post('/joinEvent', function(req,res,next){
     const db = sql_connect(),
     code = req.body.code,
     cookie = req.cookies.login,
-    sql = 'insert into voting_data(user_id,event_id) value(?,(select id from events where events.code = ?))';
+    sql = 'insert into voting_data(user_id,event_id) value(?,(select id from events where events.code = ?))',
+    sql1 = 'select end_vote from events where code = ? limit 1';
     let temp = cookie.split('//');
     db.connect(function(err){
         if(err){
             console.log(err);
             res.redirect(301,'/dashboard/voting');
         } else {
-            db.query(sql,[temp[1],code], function(error,rest,fields){
-                if(error){
-                    console.log(error);
+            db.query(sql1,[code], function(error1,rest,fields){
+                if(error1){
+                    console.log(error1);
                     res.redirect(301,'/dashboard/voting');
                 } else {
-                    console.log('Sukses!');
-                    res.redirect(301,'/dashboard/voting');
+                    let end = new Date(rest[0].end_vote).getTime();
+                    if(Date.now() < end){
+                        db.query(sql,[temp[1],code], function(error,rest,fields){
+                            if(error){
+                                console.log(error);
+                                res.redirect(301,'/dashboard/voting');
+                            } else {
+                                console.log('Sukses!');
+                                res.redirect(301,'/dashboard/voting');
+                            }
+                        })
+                    } else {
+                        console.log('Lewat');
+                        res.redirect(301,'/dashboard/voting');
+                    }
                 }
             })
         }
-        db.end();
     })
 })
 

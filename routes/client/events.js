@@ -41,8 +41,9 @@ router.get('/', function(req, res, next) {
             res.render('dashboard/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code});            
         } else {
             let temp = cookie.split('//');
+            const current = new Date();
             const sql = 'select * from events where owner_id=?';
-            con.query(sql,[temp[1]],function(error,resp,fields){
+            con.query(sql,[temp[1],current],function(error,resp,fields){
                 if(error){
                     console.log(error);
                     res.render('dashboard/events',{event_name: event_name, start_vote: start_vote, end_vote: end_vote, code: code});
